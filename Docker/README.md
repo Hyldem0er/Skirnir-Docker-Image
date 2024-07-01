@@ -24,7 +24,7 @@ sudo docker exec -it Skirnir sudo python3 ../Skirnir/main.py --ui
 ```
 
 ## On windows 
-#### With Administrator rights  
+#### Powerhsell with Administrator rights  
 ```powershell
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/Hyldem0er/Skirnir/master/Docker/win-install.ps1 -OutFile .\win-install.ps1
 ```
