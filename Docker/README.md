@@ -21,7 +21,7 @@ sudo docker-compose up -d && xhost +local:docker && sudo docker exec -it Skirnir
 ```
 
 ### Launching Skirnir  
-```
+```bash
 xhost +local:docker && sudo docker exec -it Skirnir sudo python3 ../Skirnir/main.py --ui
 ```
 
