@@ -1,0 +1,38 @@
+FROM debian:bullseye-slim
+LABEL Hyldem0er <hyldemoer@protonmail.com>
+
+ARG USERNAME=hyldemoer
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+# Create the user
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Install X11 dependencies
+RUN apt-get update && apt-get install -y \
+    x11-apps \
+    libx11-6 \
+    libgl1-mesa-glx \
+    xauth
+
+# Set up environment variables for X11 forwarding
+ENV DISPLAY=:0
+ENV LIBGL_ALWAYS_INDIRECT=1
+    
+# Create environment
+USER $USERNAME
+WORKDIR /home/$USERNAME
+ENV HOME=/home/$USERNAME
+ENV USER=$USERNAME
+
+# Copy and run the install script
+COPY ./docker/install.sh ./install.sh
+RUN sudo chmod +x ./install.sh
+RUN sudo ./install.sh
+
+CMD ["tail", "-f", "/dev/null"]
