@@ -45,7 +45,7 @@ powershell -noexit -ExecutionPolicy Bypass -File .\win-install.ps1
 > [!IMPORTANT]
 >  If you've already performed the installation and rebooted your machine, and you'd like to restart the Skirnir container, you'll need to start docker-desktop and run the docker service in WSL.
 ```bash
-service docker start
+sudo service docker start
 ```
 
 >[!WARNING]
