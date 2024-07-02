@@ -5,7 +5,7 @@
 
 ```bash
 git clone https://github.com/Hyldem0er/Skirnir && cd Skirnir/Docker \
-chmod +x docker-install.sh && sudo sh docker-install.sh \
+sudo chmod +x docker-install.sh && sudo sh docker-install.sh \
 sudo docker-compose build \
 sudo docker-compose up -d && xhost +local:docker && sudo docker exec -it Skirnir sudo python3 ../Skirnir/main.py --ui
 ```
@@ -15,7 +15,7 @@ Installation of curl, git and docker building with skirnir launching
 ```bash
 apt-get install curl git -y \
 git clone https://github.com/Hyldem0er/Skirnir && cd Skirnir/Docker \
-chmod +x docker-install.sh && sudo sh docker-install.sh \
+sudo chmod +x docker-install.sh && sudo sh docker-install.sh \
 sudo docker-compose build \
 sudo docker-compose up -d && xhost +local:docker && sudo docker exec -it Skirnir sudo python3 ../Skirnir/main.py --ui
 ```
