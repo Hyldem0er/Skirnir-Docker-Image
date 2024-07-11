@@ -1,0 +1,20 @@
+services:
+  skirnir:
+    build:
+      context: .
+      dockerfile: docker/Skirnirfile
+    image: hyldem0er/skirnir
+    user: "1000:1000"
+    working_dir: /home/hyldemoer/Skirnir_data
+    hostname: kali
+    container_name: Skirnir
+    volumes:
+      - ./Skirnir_data/:/home/hyldemoer/Skirnir_data
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
